@@ -1,3 +1,15 @@
+const map = function(array, callback) {
+  const results = [];
+  for (let item of array) {
+    results.push(callback(item))
+  }
+  return results;
+};
+
+const words = ["ground", "control", "to", "major", "tom"];
+const results = map(words, word => word[0]);
+console.log(results)
+
 const eqArrays = function(arrOne, arrTwo) {
   let isTheSame = true;
   for (let i = 0; i < arrOne.length; i++) {
@@ -10,7 +22,7 @@ const eqArrays = function(arrOne, arrTwo) {
 }
 
 const assertArraysEqual = function(actual, expected) {
-  //console.log("actual and expected:", actual, expected)
+  console.log("actual and expected:", actual, expected)
   if (eqArrays(actual, expected)) {
     console.log(`👍 Assertion Passed: ${actual} === ${expected}`)
   } else {
@@ -18,13 +30,9 @@ const assertArraysEqual = function(actual, expected) {
   }
 };
 
-console.log(assertEqual([1, 2 , 3], [1, 2, 3])) 
-console.log(assertEqual([1, 2 , 3], [1, 2, '3'])) 
+test1 = [1, 2, 3]
+test2 = [1, 2, 4]
+//console.log(assertArraysEqual(eqArrays(test1, test2)))
 
-const without = function(source, itemsToRemove) {
-  for (let i = 0; i < source.length; i++) {
-    console.log(source, itemsToRemove)
-  }
-}
+assertArraysEqual(results, ['g', 'c', 't', 'm', 't'])
 
-console.log(without(['hello'], ['goodbye']))

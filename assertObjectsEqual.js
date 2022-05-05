@@ -14,7 +14,7 @@ const eqObjects = function(object1, object2) {
   }
 
   if (Array.isArray(char1) && Array.isArray(char2)) {
-    //console.log(`Testing array: ${eqArrays(char1, char2)}`);
+    console.log(`Testing array: ${eqArrays(char1, char2)}`);
     equObjects = true
   } else if (char1 === char2 && keyCounter1 === keyCounter2)
     equObjects = true;
@@ -22,23 +22,31 @@ const eqObjects = function(object1, object2) {
   return equObjects;
 };
 
-const assertObjectsEqual = function(actual, expected) {
+const assertEqual = function(actual, expected) {
+  const inspect = require('util').inspect;
+  let statement = '';
   if (eqObjects(actual, expected)) {
-    console.log('Assertion Passed')
+    statement += console.log(`👍 Assertion Passed: ${inspect(actual)} === ${inspect(expected)}`)
   } else {
-    console.log('Assertion Failed')
+    statement += console.log(`👎 Assertion Failed: ${inspect(actual)} !== ${inspect(expected)}`)
   }
-  return ''
-}
+  return statement
+};
+
 
 const ab = {
-  a: [1, 2, ,3],
+  a: "1",
   b: "2",
 };
 
 const ba = {
-  a: [1, 2, 3],
-  b: "2"
+  b: "2",
+  a: "1"
 };
 
-console.log(assertObjectsEqual(ab, ba))
+console.log(assertEqual(eqObject(ab, ba))
+console.log(eqObjects(ab, ba))
+
+
+
+

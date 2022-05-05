@@ -23,20 +23,20 @@ const assertArraysEqual = function(actual, expected) {
 
 const middle = function(array) {
   let midArray = [];
-  let getLength = array.length
+  let getLength = array.length;
   //console.log(getLength)
   if (getLength === 1 || getLength === 2 || getLength === 0) {
-    return midArray; 
+    return midArray;
   } else if (getLength % 2 !== 0) {
-    let half = Math.round(getLength / 2)
+    let half = Math.round(getLength / 2);
     //console.log(half)
-    midArray.push(half)
+    midArray.push(half);
   } else if (getLength % 2 === 0) {
-    let half = getLength / 2
-    midArray.push(half)
-    midArray.push(half + 1)
+    let half = getLength / 2;
+    midArray.push(half);
+    midArray.push(half + 1);
   }
-  return midArray
-}
+  return midArray;
+};
 
-console.log(middle([1, 2, 3, 4, 5, 6]))
+console.log(middle([1, 2, 3, 4, 5, 6]));

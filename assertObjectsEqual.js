@@ -1,28 +1,29 @@
 const eqObjects = function(object1, object2) {
-  let equObjects = false;
-  let keyCounter1 = 0;
-  let keyCounter2 = 0;
-  let char1;
-  let char2;
-  for (let prop in object1) {
-    keyCounter1 += prop.length;
-    char1 = object1[prop];
+  let isTheSame = true;
+  let key1 = Object.keys(object1)
+  let key2 = Object.keys(object2)
+  //console.log(key1, key2)
+  let key1Length = key1.length
+  let key2Length = key2.length
+  if (key1Length !== key2Length) {
+    return false
+  } 
+  for (let property of key1) {
+    if (Array.isArray(object1[property]) && Array.isArray(object2[property])) {
+      return eqArrays(object1[property], object2[property]) 
+    }
+    //console.log(object1[property], object2[property])
+    if (object1[property] !== object2[property]) {
+      isTheSame = false
+      return isTheSame
+    } else {
+      isTheSame = true
+    } 
   }
-  for (let prop in object2) {
-    keyCounter2 += prop.length;
-    char2 = object2[prop];
-  }
-
-  if (Array.isArray(char1) && Array.isArray(char2)) {
-    console.log(`Testing array: ${eqArrays(char1, char2)}`);
-    equObjects = true
-  } else if (char1 === char2 && keyCounter1 === keyCounter2)
-    equObjects = true;
-  
-  return equObjects;
+  return isTheSame
 };
 
-const assertEqual = function(actual, expected) {
+const assertObjectsEqual = function(actual, expected) {
   const inspect = require('util').inspect;
   let statement = '';
   if (eqObjects(actual, expected)) {
@@ -34,19 +35,6 @@ const assertEqual = function(actual, expected) {
 };
 
 
-const ab = {
-  a: "1",
-  b: "2",
-};
-
-const ba = {
-  b: "2",
-  a: "1"
-};
-
-console.log(assertEqual(eqObject(ab, ba))
-console.log(eqObjects(ab, ba))
-
-
-
-
+let obj1 = { a: '1', b: 2 }  
+let obj2 = { b: 2, a: '1' }
+assertObjectsEqual(obj1, obj2)

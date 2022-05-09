@@ -50,7 +50,7 @@ const ab = { a: "1", b: "2" };
 const ba = { b: "2", a: "1" };
 
 //assertEqual(ab, ba)
-//console.log(eqObjects(ab, ba))
+console.log(eqObjects(ab, ba))
 
 
 
@@ -60,5 +60,4 @@ console.log(eqObjects(cd, dc))
 
 
 const cd2 = { c: "1", d: ["2", 3, 4] };
-console.log(eqObjects(cd, cd2)); // => false
-//console.log(eqObjects(cd2, cd))
+console.log(eqObjects(cd2, cd))

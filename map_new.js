@@ -36,3 +36,4 @@ test2 = [1, 2, 4]
 
 assertArraysEqual(results, ['g', 'c', 't', 'm', 't'])
 
+

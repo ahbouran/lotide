@@ -3,12 +3,14 @@ const eqArrays = require('./eqArrays');
 
 
 const assertArraysEqual = function(actual, expected) {
-  //console.log("actual and expected:", actual, expected)
+  console.log("actual and expected:", actual, expected)
+  let statement = true;
   if (eqArrays(actual, expected)) {
-    console.log(`👍 Assertion Passed: ${actual} === ${expected}`)
+    statement = true
   } else {
-    console.log(`👎 Assertion Failed: ${actual} !== ${expected}`)
+    statement = false
   }
+ return statement
 };
 
 module.exports = assertArraysEqual;

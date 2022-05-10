@@ -1,24 +1,5 @@
-const eqArrays = function(arrOne, arrTwo) {
-  let isTheSame = true;
-  for (let i = 0; i < arrOne.length; i++) {
-    //console.log(arrOne[i], arrTwo[i])
-    if (arrOne[i] !== arrTwo[i]) {
-      isTheSame = false
-    } 
-  }
-  return isTheSame;
-}
-
-const assertEqual = function(actual, expected) {
-  let statement = '';
-  if (eqArrays(actual, expected)) {
-    statement += `👍 Assertion Passed: ${actual} === ${expected}`
-  } else {
-    statement += `👎 Assertion Failed: ${actual} !== ${expected}`
-  }
-  return statement
-};
-
+const eqArrays = require('./eqArrays');
+const assertEqual  = require('./assertEqual');
 
 const without = function(source, itemsToRemove) {
   let newArr = [...source];
@@ -32,5 +13,5 @@ const without = function(source, itemsToRemove) {
   }
   return newArr;
 }
-console.log(without(['hello', 'see ya', 'bye', 'goodbye'], ['goodbye', 'hello']))
-console.log(without([1, 2, 3], [1])) 
+
+module.exports = without;
